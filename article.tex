@@ -1,0 +1,94 @@
+\documentclass[]{article}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable} 
+\usepackage{filecontents}
+
+\pgfplotsset{compat=1.8}
+
+\begin{document}
+	%The bar diagram is splitted in tre parts for better visualization
+	%First diagram from file1.csv
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+		\begin{axis}[
+		table/col sep=comma,
+		xbar=0pt, xmin=0,
+		xlabel=Numero consulti,
+		yticklabels from table={file1.csv}{Area},
+		yticklabel style={text height=1.5ex},
+		ytick=data,
+		width=0.5\textwidth,
+		y=0.6cm,
+		enlarge y limits={abs=0.5},
+		bar width=7pt,
+		/pgf/number format/fixed,
+		axis lines*=left,
+		xmajorgrids=true,
+		reverse legend, area legend,
+		legend pos=south east,
+		nodes near coords,
+		cycle list name=exotic,
+		]
+		\addplot [draw=none, fill={rgb:red,18;green,73;blue,133}] table [y expr=-\coordindex, x=Totale] {file1.csv};
+		\end{axis}
+		\end{tikzpicture}
+		\caption{Distribuzione consulti per aree mediche}
+	\end{figure}
+	
+	%Second diagram from file2.csv
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+		\begin{axis}[
+		table/col sep=comma,
+		xbar=0pt, xmin=0,
+		xlabel=Numero consulti,
+		yticklabels from table={file2.csv}{Area},
+		yticklabel style={text height=1.5ex},
+		ytick=data,
+		width=0.5\textwidth,
+		y=0.6cm,
+		enlarge y limits={abs=0.5},
+		bar width=7pt,
+		/pgf/number format/fixed,
+		axis lines*=left,
+		xmajorgrids=true,
+		reverse legend, area legend,
+		legend pos=south east,
+		nodes near coords	
+		]
+		\addplot [draw=none, fill={rgb:red,18;green,73;blue,133}]  table [y expr=-\coordindex, x=Totale] {file2.csv};
+		\end{axis}
+		\end{tikzpicture}
+		\caption{Distribuzione consulti per aree mediche - continua}
+	\end{figure}
+	
+	%Third diagram from file3.csv
+	\begin{figure}
+		\centering
+		\begin{tikzpicture}
+		\begin{axis}[
+		table/col sep=comma,
+		xbar=0pt, xmin=0,
+		xlabel=Numero consulti,
+		yticklabels from table={file3.csv}{Area},
+		yticklabel style={text height=1.5ex},
+		ytick=data,
+		width=0.5\textwidth,
+		y=0.6cm,
+		enlarge y limits={abs=0.5},
+		bar width=7pt,
+		/pgf/number format/fixed,
+		axis lines*=left,
+		xmajorgrids=true,
+		reverse legend, area legend,
+		legend pos=south east,
+		nodes near coords	
+		]
+		\addplot [draw=none, fill={rgb:red,18;green,73;blue,133}]  table [y expr=-\coordindex, x=Totale] {file3.csv};
+		\end{axis}
+		\end{tikzpicture}
+		\caption{Distribuzione consulti per aree mediche - continua}
+	\end{figure}		
+\end{document}
